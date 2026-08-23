@@ -1,15 +1,23 @@
-# Rintu Dutta — Final CV Website
+# Rintu Dutta — Improved Recruiter CV Website
 
-This package is based on the uploaded final `index(1).html`.
+Implemented on the supplied HTML/CSS files.
 
-Refactor only:
-- All inline CSS moved to `style.css`
-- All inline JavaScript moved to `script.js`
-- `index.html` now references both external files
-- Existing content, layout, styling and behavior are preserved
+Improvements:
+- Senior Full Stack positioning
+- Stronger Laravel / Node.js / NestJS / React / Next.js visibility
+- Recruiter-first hero with Download Resume / LinkedIn / Contact CTAs
+- Engineering impact counters
+- What I Do section
+- Architecture & Engineering section
+- Cloud & DevOps section
+- Career progression visual
+- Current Focus section
+- Stronger current-role technical bullets
+- Improved light-mode readability
 
-Assets:
-- `assets/rintu-dutta.png`
-- `assets/Rintu-Dutta-Resume.pdf`
-
-No design/content changes were made in this refactor.
+Files:
+- index.html
+- style.css
+- script.js
+- assets/rintu-dutta.png
+- assets/Rintu-Dutta-Resume.pdf
