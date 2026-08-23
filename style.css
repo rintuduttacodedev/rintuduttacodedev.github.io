@@ -369,7 +369,7 @@ body{padding-left:var(--sidebar-width)}
 .availability{font-size:12px}
 
 /* Slightly larger sidebar navigation and contact text */
-.side-nav a{font-size:12.5px;padding:9px 10px}
+.side-nav a{font-size:13.5px;padding:7px 10px}
 .side-nav a .num{font-size:9.5px}
 .side-contact strong{font-size:10.5px}
 .side-contact span{font-size:7.5px}
