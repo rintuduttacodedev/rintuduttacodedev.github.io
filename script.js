@@ -19,10 +19,6 @@ theme?.addEventListener('click',()=>{
   localStorage.setItem('rintu-theme',body.classList.contains('light')?'light':'dark');
   updateThemeControl();
 });
-mobileMenu?.addEventListener('click',()=>sidebar.classList.toggle('open'));
-document.querySelectorAll('.side-nav a').forEach(a=>a.addEventListener('click',()=>{
-  sidebar.classList.remove('open');
-}));
 const observer=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('show')),{threshold:.1});
 document.querySelectorAll('.reveal').forEach(e=>observer.observe(e));
 document.getElementById('year').textContent=new Date().getFullYear();
@@ -62,16 +58,21 @@ stickyTheme?.addEventListener('click', toggleTheme);
 const originalThemeButton = document.getElementById('theme');
 originalThemeButton?.addEventListener('click', toggleTheme);
 
-document.getElementById('mobileMenu')?.addEventListener('click', ()=>{
-  document.getElementById('sidebar')?.classList.toggle('open');
-  mobileOverlay?.classList.toggle('show');
+function setMobileNavigation(open){
+  const isMobile=window.matchMedia('(max-width: 900px)').matches;
+  const shouldOpen=isMobile&&open;
+  sidebar?.classList.toggle('open',shouldOpen);
+  mobileOverlay?.classList.toggle('show',shouldOpen);
+  body.classList.toggle('menu-open',shouldOpen);
+  mobileMenu?.setAttribute('aria-expanded',String(shouldOpen));
+  mobileMenu?.setAttribute('aria-label',shouldOpen?'Close navigation':'Open navigation');
+}
+
+mobileMenu?.addEventListener('click',()=>setMobileNavigation(!sidebar?.classList.contains('open')));
+mobileOverlay?.addEventListener('click',()=>setMobileNavigation(false));
+document.querySelectorAll('.side-nav a').forEach(a=>a.addEventListener('click',()=>setMobileNavigation(false)));
+document.addEventListener('keydown',event=>{
+  if(event.key==='Escape') setMobileNavigation(false);
 });
-mobileOverlay?.addEventListener('click', ()=>{
-  document.getElementById('sidebar')?.classList.remove('open');
-  mobileOverlay?.classList.remove('show');
-});
-document.querySelectorAll('.side-nav a').forEach(a=>a.addEventListener('click',()=>{
-  document.getElementById('sidebar')?.classList.remove('open');
-  mobileOverlay?.classList.remove('show');
-}));
+window.addEventListener('resize',()=>setMobileNavigation(sidebar?.classList.contains('open')));
 syncThemeUI();

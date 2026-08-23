@@ -621,6 +621,7 @@ body.light .project:hover .project-tags span{
   border-color:#b9ccdf;
 }
 @media(max-width:900px){
+  body.menu-open{overflow:hidden}
   .sticky-tools{right:14px;bottom:14px}
   .mobile-overlay{
     position:fixed;inset:0;background:rgba(3,10,18,.48);z-index:70;
