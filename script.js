@@ -25,10 +25,12 @@ document.getElementById('year').textContent=new Date().getFullYear();
 
 const sections=[...document.querySelectorAll('section[id]')];
 const links=[...document.querySelectorAll('.side-nav a')];
+const setActiveLink=id=>links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+id));
 const active=new IntersectionObserver(es=>es.forEach(e=>{
-  if(e.isIntersecting) links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id));
+  if(e.isIntersecting) setActiveLink(e.target.id);
 }),{rootMargin:'-35% 0px -55% 0px'});
 sections.forEach(s=>active.observe(s));
+links.forEach(link=>link.addEventListener('click',()=>setActiveLink(link.getAttribute('href').slice(1))));
 
 
 const stickyTheme = document.getElementById('stickyTheme');
