@@ -26,11 +26,21 @@ document.getElementById('year').textContent=new Date().getFullYear();
 const sections=[...document.querySelectorAll('section[id]')];
 const links=[...document.querySelectorAll('.side-nav a')];
 const setActiveLink=id=>links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+id));
-const active=new IntersectionObserver(es=>es.forEach(e=>{
-  if(e.isIntersecting) setActiveLink(e.target.id);
-}),{rootMargin:'-35% 0px -55% 0px'});
-sections.forEach(s=>active.observe(s));
-links.forEach(link=>link.addEventListener('click',()=>setActiveLink(link.getAttribute('href').slice(1))));
+const updateActiveLink=()=>{
+  const marker=window.scrollY+window.innerHeight*.35;
+  let current='home';
+  sections.forEach(section=>{
+    if(section.offsetTop<=marker) current=section.id;
+  });
+  setActiveLink(current);
+};
+window.addEventListener('scroll',updateActiveLink,{passive:true});
+window.addEventListener('resize',updateActiveLink);
+links.forEach(link=>link.addEventListener('click',()=>{
+  setActiveLink(link.getAttribute('href').slice(1));
+  requestAnimationFrame(updateActiveLink);
+}));
+updateActiveLink();
 
 
 const stickyTheme = document.getElementById('stickyTheme');
