@@ -319,7 +319,8 @@ body.light footer{border-top-color:var(--border-light);color:#8b98aa}
 .about-card-title.outside{margin-top:26px}
 .about-line{display:flex;justify-content:space-between;gap:18px;padding:13px 0;border-top:1px solid var(--border-dark);font-size:13px;color:var(--muted-dark)}
 .about-line:first-of-type{border-top:0}.about-line b{color:var(--text-dark);font-weight:700}
-.about-card .hobby-tags{margin-top:6px}
+.about-card .hobby-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.about-card .hobby-tags span{display:inline-flex;align-items:center;min-height:30px;padding:6px 10px;border:1px solid rgba(94,234,212,.2);border-radius:6px;background:rgba(94,234,212,.06);color:var(--muted-dark);font-size:11px;font-weight:600;line-height:1.2;white-space:nowrap}
 .impact{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border-dark);border-radius:16px;overflow:hidden;background:var(--border-dark)}
 .impact-item{background:var(--surface-dark);padding:21px 23px;min-height:122px;border-right:1px solid var(--border-dark);position:relative}
 .impact-item:last-child{border-right:0}
@@ -331,6 +332,7 @@ body.light .about-card{background:#fff;border-color:var(--border-light);box-shad
 body.light .about-card-title{color:#8c9aaa}.body.light .about-card-title.outside{color:#8c9aaa}
 body.light .about-line{border-color:var(--border-light);color:var(--muted-light)}
 body.light .about-line b{color:var(--text-light)}
+body.light .about-card .hobby-tags span{color:#566a81;border-color:#d5dfe9;background:#f7f9fb}
 body.light .reference-about .about-text{color:var(--muted-light)}
 body.light .impact{border-color:var(--border-light);background:var(--border-light)}
 body.light .impact-item{background:#fff;border-color:var(--border-light)}
